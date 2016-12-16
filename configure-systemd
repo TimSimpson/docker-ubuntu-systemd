@@ -28,6 +28,20 @@ find \
 	-name systemd-update-utmp-runlevel.service \
 	-delete
 
+# just for cosmetics, fix "not-found" entries while using "systemctl --all"
+for MATCH in \
+	plymouth-start.service \
+	plymouth-quit-wait.service \
+	syslog.socket \
+	syslog.service \
+	display-manager.service \
+	systemd-sysusers.service \
+	tmp.mount \
+	systemd-udevd.service \
+	; do
+		grep -rn --binary-files=without-match  ${MATCH} /lib/systemd/ | cut -d: -f1 | xargs sed -ri 's/(.*=.*)'${MATCH}'(.*)/\1\2/'
+done
+
 systemctl disable ondemand.service
 systemctl set-default multi-user.target
 
