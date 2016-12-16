@@ -22,6 +22,12 @@ find \
 	! -name '*systemd-tmpfiles-setup*' \
 	-delete
 
+# remove UTMP updater service
+find \
+	/lib/systemd \
+	-name systemd-update-utmp-runlevel.service \
+	-delete
+
 systemctl disable ondemand.service
 systemctl set-default multi-user.target
 
