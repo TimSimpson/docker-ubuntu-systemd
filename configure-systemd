@@ -15,6 +15,13 @@ find \
 	! -type d \
 	-delete
 
+# remove everything except tmpfiles setup in sysinit target
+find \
+	/lib/systemd/system/sysinit.target.wants \
+	! -type d \
+	! -name '*systemd-tmpfiles-setup*' \
+	-delete
+
 systemctl disable ondemand.service
 systemctl set-default multi-user.target
 
