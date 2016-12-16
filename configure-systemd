@@ -1,0 +1,23 @@
+#!/bin/sh
+
+# exit on failure
+set -e
+
+# fail on unassigned variable
+set -u
+
+# remove systemd 'wants' triggers
+find \
+	/etc/systemd/system/*.wants/* \
+	/lib/systemd/system/multi-user.target.wants/* \
+	/lib/systemd/system/local-fs.target.wants/* \
+	/lib/systemd/system/sockets.target.wants/*initctl* \
+	! -type d \
+	-delete
+
+systemctl disable ondemand.service
+systemctl set-default multi-user.target
+
+# cleanup build files
+cd /
+rm -rf /tmp/*
