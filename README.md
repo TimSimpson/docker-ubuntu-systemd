@@ -22,6 +22,60 @@ docker run \
 ```
 
 
+## Systemd services
+
+Here is a dump of the `systemd` service currently started/handled by this docker
+image:
+
+```bash
+root@2d6c6a37c915:/# systemctl --all --no-pager --no-legend
+dev-mapper-ssd\x2ddocker.device    loaded activating tentative dev-mapper-ssd\x2ddocker.device
+-.mount                            loaded active     mounted   /
+dev-mqueue.mount                   loaded active     mounted   POSIX Message Queue File System
+etc-hostname.mount                 loaded active     mounted   /etc/hostname
+etc-hosts.mount                    loaded active     mounted   /etc/hosts
+etc-resolv.conf.mount              loaded active     mounted   /etc/resolv.conf
+init.scope                         loaded active     running   System and Service Manager
+emergency.service                  loaded inactive   dead      Emergency Shell
+rc-local.service                   loaded active     exited    /etc/rc.local Compatibility
+rescue.service                     loaded inactive   dead      Rescue Shell
+systemd-journald.service           loaded active     running   Journal Service
+systemd-tmpfiles-clean.service     loaded inactive   dead      Cleanup of Temporary Directories
+systemd-tmpfiles-setup-dev.service loaded active     exited    Create Static Device Nodes in /dev
+systemd-tmpfiles-setup.service     loaded active     exited    Create Volatile Files and Directories
+-.slice                            loaded active     active    Root Slice
+system.slice                       loaded active     active    System Slice
+systemd-journald-audit.socket      loaded active     running   Journal Audit Socket
+systemd-journald-dev-log.socket    loaded active     running   Journal Socket (/dev/log)
+systemd-journald.socket            loaded active     running   Journal Socket
+basic.target                       loaded active     active    Basic System
+emergency.target                   loaded inactive   dead      Emergency Mode
+local-fs-pre.target                loaded inactive   dead      Local File Systems (Pre)
+local-fs.target                    loaded active     active    Local File Systems
+multi-user.target                  loaded active     active    Multi-User System
+network-online.target              loaded inactive   dead      Network is Online
+network-pre.target                 loaded inactive   dead      Network (Pre)
+network.target                     loaded inactive   dead      Network
+paths.target                       loaded active     active    Paths
+rescue.target                      loaded inactive   dead      Rescue Mode
+shutdown.target                    loaded inactive   dead      Shutdown
+slices.target                      loaded active     active    Slices
+sockets.target                     loaded active     active    Sockets
+swap.target                        loaded active     active    Swap
+sysinit.target                     loaded active     active    System Initialization
+time-sync.target                   loaded inactive   dead      System Time Synchronized
+timers.target                      loaded active     active    Timers
+umount.target                      loaded inactive   dead      Unmount All Filesystems
+systemd-tmpfiles-clean.timer       loaded active     waiting   Daily Cleanup of Temporary Directories
+root@2d6c6a37c915:/#
+```
+
+Note: my `/var/lib/docker` is mounted from `/dev/mapper/ssd/docker` on my host,
+that's why the service `dev-mapper-ssd\x2ddocker.device` is shown here. This
+should be the only difference between this dump and the one you may see on your
+system.
+
+
 ## Why not using the latest Ubuntu version as `FROM` image
 
 Due to an [Ubuntu patch](https://launchpad.net/ubuntu/+source/systemd/229-4ubuntu8) applied on the systemd package, stdin/out/err
