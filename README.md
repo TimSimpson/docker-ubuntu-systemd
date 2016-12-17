@@ -157,6 +157,16 @@ As I'm using this docker image only for development purposes, I may have a look
 at this issue in the future (if I have some time)
 
 
+## Build
+
+In order to build this container image instead of using the one on the Docker Hub,
+you can use the following command from the root directory of this repository:
+
+```bash
+docker build -t lionelnicolas/ubuntu-systemd .
+```
+
+
 ## License
 
 This is licensed under the Apache License, Version 2.0. Please see [LICENSE](https://github.com/lionelnicolas/docker-ubuntu-systemd/blob/master/LICENSE)
