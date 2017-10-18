@@ -172,4 +172,4 @@ docker build -t lionelnicolas/ubuntu-systemd .
 This is licensed under the Apache License, Version 2.0. Please see [LICENSE](https://github.com/lionelnicolas/docker-ubuntu-systemd/blob/master/LICENSE)
 for the full license text.
 
-Copyright 2016 Lionel Nicolas
+Copyright 2016-2017 Lionel Nicolas
