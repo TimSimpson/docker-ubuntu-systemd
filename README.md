@@ -76,7 +76,7 @@ should be the only difference between this dump and the one you may see on your
 system.
 
 
-## Why not using the latest Ubuntu version as `FROM` image
+## Why not use the latest Ubuntu version as `FROM` image
 
 Due to an [Ubuntu patch](https://launchpad.net/ubuntu/+source/systemd/229-4ubuntu8) applied on the systemd package, stdin/out/err
 descriptors are no longer available when systemd is running within containers
