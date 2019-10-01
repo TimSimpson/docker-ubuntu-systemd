@@ -59,4 +59,6 @@ RUN \
 	systemctl disable ondemand.service && \
 	systemctl set-default multi-user.target
 
+STOPSIGNAL SIGRTMIN+3
+
 ENTRYPOINT ["/lib/systemd/systemd"]
