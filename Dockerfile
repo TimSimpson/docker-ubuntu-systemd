@@ -59,6 +59,8 @@ RUN \
 	systemctl disable ondemand.service && \
 	systemctl set-default multi-user.target
 
+VOLUME ["/run", "/run/lock"]
+
 STOPSIGNAL SIGRTMIN+3
 
 ENTRYPOINT ["/lib/systemd/systemd"]
