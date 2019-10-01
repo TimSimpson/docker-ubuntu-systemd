@@ -41,6 +41,8 @@ RUN \
 		-delete && \
 # disable /tmp mount
 	rm -vf /usr/share/systemd/tmp.mount && \
+# fix missing BPF firewall support warning
+	sed -ri '/^IPAddressDeny/d' /lib/systemd/system/systemd-journald.service && \
 # just for cosmetics, fix "not-found" entries while using "systemctl --all"
 	for MATCH in \
 		plymouth-start.service \
