@@ -39,6 +39,8 @@ RUN \
 		/lib/systemd \
 		-name systemd-update-utmp-runlevel.service \
 		-delete && \
+# disable /tmp mount
+	rm -vf /usr/share/systemd/tmp.mount && \
 # just for cosmetics, fix "not-found" entries while using "systemctl --all"
 	for MATCH in \
 		plymouth-start.service \
