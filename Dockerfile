@@ -1,4 +1,4 @@
-FROM ubuntu:xenial-20160818
+FROM ubuntu:bionic-20190912.1 as final
 
 ENV container=docker
 
